@@ -1,0 +1,70 @@
+![image](https://github.com/user-attachments/assets/c8976d16-2f21-47ec-a762-d397ee759d28)# 📦 Inventário Relacional - Santamérica
+
+Sistema web desenvolvido para **gestão de inventário**, com foco em controle de entradas, saídas, atualizações e monitoramento de itens essenciais utilizados internamente.
+
+---
+
+## 🏢 Sobre o Projeto
+
+Este sistema foi desenvolvido **dentro da Imobiliária Santamérica** com o intuito de **melhorar e facilitar os cadastros de itens**, substituindo o método anterior que era realizado manualmente por **planilhas no Excel**.
+
+A ferramenta visa:
+
+- Aumentar a **eficiência operacional** na gestão de estoque.
+- Garantir **mais precisão** nos dados.
+- Fornecer **visão em tempo real** dos níveis de estoque.
+- Reduzir erros humanos em registros manuais.
+
+---
+
+## ⚙️ Funcionalidades
+
+- **Dashboard** com gráficos de status de estoque e movimentações recentes.
+- **Cadastro de novos itens** com definição de limite mínimo e máximo.
+- **Registro de adições** ao estoque com responsável e data.
+- **Registro de retiradas** com controle de setor e solicitante.
+- **Histórico de alterações** de cada item.
+- **Relatórios de movimentação e necessidade de compra**.
+- Exportação de relatórios para **PDF** e **CSV**.
+
+---
+
+## 🛠️ Tecnologias Utilizadas
+
+**Back-end**:
+- Python 3.13
+- Flask
+- Flask-SQLAlchemy
+- MySQL (via SQL Workbench)
+- PyMySQL
+
+**Front-end**:
+- HTML5
+- CSS3
+- JavaScript (puro)
+- Chart.js (gráficos)
+- jsPDF + AutoTable (exportação de relatórios)
+
+---
+
+## 📂 Estrutura de Pastas
+📂Inv
+├── app/ 
+│      └── static/ 
+│         └── style.css # Estilo visual da aplicação 
+│         └── script.js # Lógica de interação front-end
+├── templates/ 
+│         └── index.html # Interface principal 
+├── style.css # Estilo visual da aplicação 
+│         └── script.js # Lógica de interação front-end
+├── main.py # Back-end Flask (API e lógica principal) 
+
+
+##Atulizações Futuras
+- Login com autenticação de usuários.
+- Controle por departamentos.
+- tórios mensais automáticos.
+- Integração com sistemas de compras.
+
+## 👨‍💼 Desenvolvido por
+Equipe de desenvolvimento interno da Imobiliária Santamérica
