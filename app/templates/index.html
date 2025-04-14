@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html lang="en"> <!-- Define o idioma do documento como inglês -->
+<head>
+    <meta charset="UTF-8"> <!-- Codificação de caracteres UTF-8 -->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsividade em dispositivos móveis -->
+    <title>Inventario Relacionamento</title> <!-- Título exibido na aba do navegador -->
+
+    <!-- Link para o CSS local (estilização do sistema) -->
+    <link rel="stylesheet" href="/static/style.css">
+
+    <!-- Biblioteca de ícones Font Awesome para uso visual (ícones de caixa, gráfico etc.) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+
+    <!-- Biblioteca Chart.js para gráficos de pizza e linha no dashboard -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.min.css">
+</head>
+<body>
+    <div class="container"> <!-- Container principal que envolve todo o layout -->
+
+        <!-- ==================== CABEÇALHO ==================== -->
+        <header>
+            <h1><i class="fas fa-boxes"></i> Inventario Relacionamento</h1> <!-- Título principal com ícone -->
+
+            <!-- Menu de navegação lateral -->
+            <nav>
+                <ul>
+                    <li><a href="#dashboard" class="active"><i class="fas fa-tachometer-alt"></i> Dashboard</a></li>
+                    <li><a href="#inventory"><i class="fas fa-clipboard-list"></i> Inventario</a></li>
+                    <li><a href="#add-stock"><i class="fas fa-plus-circle"></i> Aidicionar</a></li>
+                    <li><a href="#withdraw-stock"><i class="fas fa-minus-circle"></i> Retirada</a></li>
+                    <li><a href="#reports"><i class="fas fa-chart-bar"></i> Relatorio</a></li>
+                </ul>
+            </nav>
+        </header>
+
+        <!-- ==================== CONTEÚDO PRINCIPAL ==================== -->
+        <main>
+
+            <!-- ===== DASHBOARD: Visão geral dos dados ===== -->
+            <section id="dashboard" class="page active">
+                <h2>Dashboard</h2>
+
+                <!-- Cartões com estatísticas -->
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon"><i class="fas fa-box"></i></div>
+                        <div class="stat-info">
+                            <h3>Total de Items</h3>
+                            <p id="total-items">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card warning">
+                        <div class="stat-icon"><i class="fas fa-exclamation-triangle"></i></div>
+                        <div class="stat-info">
+                            <h3>Items Repozição</h3>
+                            <p id="items-to-purchase">0</p>
+                        </div>
+                    </div>
+                    <div class="stat-card success">
+                        <div class="stat-icon"><i class="fas fa-check-circle"></i></div>
+                        <div class="stat-info">
+                            <h3>Items Suficientes</h3>
+                            <p id="sufficient-items">0</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Gráficos -->
+                <div class="charts-container">
+                    <div class="chart-card">
+                        <h3>Status Inventario</h3>
+                        <canvas id="status-chart"></canvas>
+                    </div>
+                    <div class="chart-card">
+                        <h3>Transações Recentes</h3>
+                        <canvas id="transactions-chart"></canvas>
+                    </div>
+                </div>
+
+                <!-- Tabela com itens que precisam ser comprados -->
+                <div class="dashboard-table">
+                    <h3>Items to Purchase</h3>
+                    <table id="purchase-items-table">
+                        <thead>
+                            <tr>
+                                <th>Nome Item</th>
+                                <th>Quantidade</th>
+                                <th>Limite Mínimo</th>
+                                <th>Quantidade a encomendar</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ===== INVENTÁRIO: Lista de todos os itens cadastrados ===== -->
+            <section id="inventory" class="page">
+                <h2>Inventory</h2>
+
+                <!-- Barra de busca e botão de adicionar novo item -->
+                <div class="search-container">
+                    <input type="text" id="search-inventory" placeholder="Search items...">
+                    <button id="add-new-item-btn" class="btn primary"><i class="fas fa-plus"></i> Add New Item</button>
+                </div>
+
+                <!-- Tabela principal de itens -->
+                <div class="table-container">
+                    <table id="inventory-table">
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nome</th>
+                                <th>Unidade</th>
+                                <th>Quantidade</th>
+                                <th>Status</th>
+                                <th>Ação</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+
+                <!-- Modal para adicionar novo item -->
+                <div id="add-item-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Adicionar Item</h2>
+                        <form id="add-item-form">
+                            <div class="form-group">
+                                <label for="item-name">Nome item</label>
+                                <input type="text" id="item-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="measurement-unit">Unidade de Medição</label>
+                                <input type="text" id="measurement-unit" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="initial-quantity">Quantidade Inicial</label>
+                                <input type="number" id="initial-quantity" required min="0">
+                            </div>
+                            <div class="form-group">
+                                <label for="min-threshold">Limite Mínimo</label>
+                                <input type="number" id="min-threshold" value="15" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="max-threshold">Limite Maximo</label>
+                                <input type="number" id="max-threshold" value="50" min="1">
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn primary">Adicionar</button>
+                                <button type="button" class="btn" id="cancel-add-item">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Modal para edição de item -->
+                <div id="edit-item-modal" class="modal">
+                    <div class="modal-content">
+                        <span class="close">&times;</span>
+                        <h2>Editar Item</h2>
+                        <form id="edit-item-form">
+                            <input type="hidden" id="edit-item-id">
+                            <div class="form-group">
+                                <label for="edit-item-name">Nome Item</label>
+                                <input type="text" id="edit-item-name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-measurement-unit">Quantidade Inicial</label>
+                                <input type="text" id="edit-measurement-unit" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-min-threshold">Limite Minimo</label>
+                                <input type="number" id="edit-min-threshold" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-max-threshold">Limite Maximo</label>
+                                <input type="number" id="edit-max-threshold" min="1">
+                            </div>
+                            <div class="form-group">
+                                <label for="edit-updated-by">Atualizado por</label>
+                                <input type="text" id="edit-updated-by" required>
+                            </div>
+                            <div class="form-actions">
+                                <button type="submit" class="btn primary">Item Atualizado</button>
+                                <button type="button" class="btn" id="cancel-edit-item">Cancelar</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ===== ADIÇÃO DE ESTOQUE ===== -->
+            <section id="add-stock" class="page">
+                <h2>Adicionar Stock</h2>
+
+                <!-- Formulário de adição de estoque -->
+                <div class="form-container">
+                    <form id="add-stock-form">
+                        <div class="form-group">
+                            <label for="add-stock-item">Select Item</label>
+                            <select id="add-stock-item" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-stock-quantity">Quantidade Adicionado</label>
+                            <input type="number" id="add-stock-quantity" required min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="add-stock-date">Data de Compra</label>
+                            <input type="date" id="add-stock-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-stock-receiver">Recebido por</label>
+                            <input type="text" id="add-stock-receiver" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="add-stock-notes">Notas</label>
+                            <textarea id="add-stock-notes"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary">Adicionar</button>
+                            <button type="reset" class="btn">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Tabela com últimas adições -->
+                <div class="recent-additions">
+                    <h3>Adições Recentes</h3>
+                    <table id="recent-additions-table">
+                        <thead>
+                            <tr>
+                                <th>Nome Item</th>
+                                <th>Quantidade Adicionada</th>
+                                <th>Data de Compra</th>
+                                <th>Recebido por</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ===== RETIRADA DE ESTOQUE ===== -->
+            <section id="withdraw-stock" class="page">
+                <h2>Retirada do Stock</h2>
+
+                <!-- Formulário de retirada -->
+                <div class="form-container">
+                    <form id="withdraw-stock-form">
+                        <div class="form-group">
+                            <label for="withdraw-stock-item">Select Item</label>
+                            <select id="withdraw-stock-item" required></select>
+                        </div>
+                        <div class="form-group">
+                            <label for="withdraw-stock-quantity">Quantidade Retirada</label>
+                            <input type="number" id="withdraw-stock-quantity" required min="1">
+                        </div>
+                        <div class="form-group">
+                            <label for="withdraw-stock-date">Data de Retirada</label>
+                            <input type="date" id="withdraw-stock-date" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="withdraw-stock-person">Retirado por</label>
+                            <input type="text" id="withdraw-stock-person" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="withdraw-stock-department">Departamento</label>
+                            <input type="text" id="withdraw-stock-department" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="withdraw-stock-notes">Notas</label>
+                            <textarea id="withdraw-stock-notes"></textarea>
+                        </div>
+                        <div class="form-actions">
+                            <button type="submit" class="btn primary">Retirar</button>
+                            <button type="reset" class="btn">Limpar</button>
+                        </div>
+                    </form>
+                </div>
+
+                <!-- Tabela com últimas retiradas -->
+                <div class="recent-withdrawals">
+                    <h3>Retiradas Recente</h3>
+                    <table id="recent-withdrawals-table">
+                        <thead>
+                            <tr>
+                                <th>Nome Item</th>
+                                <th>Quantidade Retirada</th>
+                                <th>Data da Retirada</th>
+                                <th>Retirado(a) por</th>
+                                <th>Departamento</th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </div>
+            </section>
+
+            <!-- ===== RELATÓRIOS ===== -->
+            <section id="reports" class="page">
+                <h2>Relatorio</h2>
+
+                <!-- Filtros para geração de relatórios -->
+                <div class="report-filters">
+                    <div class="form-group">
+                        <label for="report-type">Tipo de Relatorio</label>
+                        <select id="report-type">
+                            <option value="transactions">Todas as Transacções</option>
+                            <option value="purchase-needs">Necessidades de compra</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="item-filter-container">
+                        <label for="report-item">Filtrar por Item</label>
+                        <select id="report-item">
+                            <option value="">Todos os Items</option>
+                        </select>
+                    </div>
+                    <div class="form-group" id="date-filter-container">
+                        <label for="report-start-date">Data de Inicio</label>
+                        <input type="date" id="report-start-date">
+                        <label for="report-end-date">Data Final</label>
+                        <input type="date" id="report-end-date">
+                    </div>
+                    <button id="generate-report-btn" class="btn relatory">Generar Relatorio</button>
+                </div>
+
+                <!-- Exibição do resultado dos relatórios -->
+                <div class="report-results">
+                    <h3 id="report-title">Resultado do Relatorio</h3>
+                    <div class="download-options">
+                        <button id="download-csv" class="btn"><i class="fas fa-file-csv"></i> Exportar para CSV</button>
+                        <button id="download-pdf" class="btn"><i class="fas fa-file-pdf"></i> Exportar para PDF</button>
+                    </div>
+                    <div class="table-container">
+                        <table id="report-table">
+                            <thead>
+                                <tr>
+                                    <!-- Cabeçalhos do relatório são gerados dinamicamente -->
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Rodapé fixo da página -->
+        <footer>
+            <p>&copy; 2025 Desenvovimento de Sistemas</p>
+        </footer>
+    </div>
+
+    <!-- ============ BIBLIOTECAS JAVASCRIPT ============ -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.5.29/jspdf.plugin.autotable.min.js"></script>
+
+    <!-- Script customizado da aplicação -->
+    <script src="/static/script.js"></script>
+</body>
+</html>

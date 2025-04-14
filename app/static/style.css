@@ -1,0 +1,408 @@
+/* ========== VARIÁVEIS DE CORES E ESTILOS GERAIS ========== */
+:root {
+    --primary-color: #2c3e50;         /* Azul escuro: cabeçalho e rodapé */
+    --secondary-color: #3498db;       /* Azul claro: botões primários e destaques */
+    --success-color: #2ecc71;         /* Verde: status "SUFFICIENT" */
+    --warning-color: #f39c12;         /* Amarelo: status "COMPRAS" */
+    --danger-color: #e74c3c;          /* Vermelho: exclusão e alertas */
+    --light-color: #ecf0f1;           /* Cinza claro: plano de fundo tabelas/inputs */
+    --dark-color: #34495e;            /* Cinza escuro: textos */
+    --shadow: 0 4px 6px rgba(0, 0, 0, 0.1);  /* Sombra sutil */
+}
+
+/* Reset de margens e caixas */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Estilização geral do corpo */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;  /* Fundo cinza claro */
+}
+
+/* Container principal com layout vertical (coluna) */
+.container {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;  /* Altura total da tela */
+}
+
+/* ========== CABEÇALHO ========== */
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 1rem;
+    box-shadow: var(--shadow);
+}
+
+header h1 {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+/* Navegação principal */
+nav ul {
+    display: flex;
+    list-style: none;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 4px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: background-color 0.3s;
+}
+
+nav a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+nav a.active {
+    background-color: var(--secondary-color);  /* Aba ativa */
+}
+
+/* ========== CONTEÚDO PRINCIPAL ========== */
+main {
+    flex: 1;
+    padding: 2rem;
+}
+
+/* Cada seção (página) é oculta por padrão */
+section.page {
+    display: none;
+}
+
+/* Somente a seção ativa é exibida */
+section.page.active {
+    display: block;
+}
+
+h2 {
+    color: var(--primary-color);
+    margin-bottom: 1.5rem;
+    border-bottom: 2px solid var(--light-color);
+    padding-bottom: 0.5rem;
+}
+
+h3 {
+    color: var(--dark-color);
+    margin: 1rem 0;
+}
+
+/* ========== DASHBOARD ========== */
+.dashboard-stats {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.stat-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    display: flex;
+    align-items: center;
+    box-shadow: var(--shadow);
+    border-left: 5px solid var(--secondary-color);
+}
+
+.stat-card.warning {
+    border-left-color: var(--warning-color);  /* Amarelo para "COMPRAS" */
+}
+
+.stat-card.success {
+    border-left-color: var(--success-color);  /* Verde para "SUFFICIENT" */
+}
+
+.stat-icon {
+    font-size: 2rem;
+    color: var(--secondary-color);
+    margin-right: 1rem;
+}
+
+.stat-card.warning .stat-icon {
+    color: var(--warning-color);
+}
+
+.stat-card.success .stat-icon {
+    color: var(--success-color);
+}
+
+.stat-info h3 {
+    margin: 0;
+    font-size: 1rem;
+}
+
+.stat-info p {
+    font-size: 1.8rem;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* ========== GRÁFICOS ========== */
+.charts-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.chart-card {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    box-shadow: var(--shadow);
+}
+
+.chart-card h3 {
+    margin-top: 0;
+    margin-bottom: 1rem;
+}
+
+/* ========== TABELAS ========== */
+.table-container {
+    background-color: white;
+    border-radius: 8px;
+    overflow: auto;
+    box-shadow: var(--shadow);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 0.75rem 1rem;
+    text-align: left;
+    border-bottom: 1px solid var(--light-color);
+}
+
+th {
+    background-color: var(--light-color);
+    font-weight: bold;
+    color: var(--dark-color);
+}
+
+tr:hover {
+    background-color: rgba(0, 0, 0, 0.02);  /* Destaque sutil na linha */
+}
+
+.dashboard-table {
+    margin-top: 2rem;
+}
+
+/* ========== FORMULÁRIOS ========== */
+.form-container {
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+label {
+    display: block;
+    margin-bottom: 0.5rem;
+    font-weight: 500;
+}
+
+input, select, textarea {
+    width: 100%;
+    padding: 0.5rem;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 1rem;
+}
+
+.form-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* ========== BOTÕES ========== */
+.btn {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 1rem;
+    background-color: var(--light-color);
+    color: var(--dark-color);
+    transition: background-color 0.3s;
+}
+
+.btn:hover {
+    background-color: #ddd;
+}
+
+.btn.relatory {
+    background-color: var(--secondary-color);
+    padding: 0;
+    height: 50px;
+    width: 150px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+.btn.relatory:hover {
+    background-color: #1a5276;
+}
+
+.btn.primary {
+    background-color: var(--secondary-color);
+    color: white;
+}
+.btn.primary:hover {
+    background-color: #2980b9;
+}
+
+.btn.warning {
+    background-color: var(--warning-color);
+    color: white;
+}
+.btn.warning:hover {
+    background-color: #e67e22;
+}
+
+.btn.danger {
+    background-color: var(--danger-color);
+    color: white;
+}
+.btn.danger:hover {
+    background-color: #c0392b;
+}
+
+/* ========== BUSCA ========== */
+.search-container {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1.5rem;
+    gap: 1rem;
+}
+
+.search-container input {
+    flex: 1;
+}
+
+/* ========== MODAIS ========== */
+.modal {
+    display: none;  /* Escondido por padrão */
+    position: fixed;
+    z-index: 10;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5); /* Fundo escurecido */
+    overflow: auto;
+}
+
+.modal-content {
+    background-color: white;
+    margin: 10vh auto;
+    padding: 2rem;
+    border-radius: 8px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: var(--shadow);
+    position: relative;
+}
+
+.close {
+    position: absolute;
+    top: 1rem;
+    right: 1.5rem;
+    font-size: 1.5rem;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* ========== CORES POR STATUS ========== */
+.status-sufficient {
+    color: var(--success-color);
+    font-weight: bold;
+}
+
+.status-compras {
+    color: var(--warning-color);
+    font-weight: bold;
+}
+
+/* ========== TABELAS DE TRANSAÇÕES RECENTES ========== */
+.recent-additions, .recent-withdrawals {
+    margin-top: 2rem;
+}
+
+/* ========== FILTROS DE RELATÓRIO ========== */
+.report-filters {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    gap: 1rem;
+    background-color: white;
+    border-radius: 8px;
+    padding: 1.5rem;
+    margin-bottom: 2rem;
+    box-shadow: var(--shadow);
+}
+
+/* Botões de exportação CSV e PDF */
+.download-options {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-bottom: 1rem;
+}
+
+/* ========== RODAPÉ ========== */
+footer {
+    background-color: var(--primary-color);
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: auto;
+}
+
+/* ========== RESPONSIVIDADE ========== */
+@media (max-width: 768px) {
+    main {
+        padding: 1rem;
+    }
+
+    .dashboard-stats, .charts-container {
+        grid-template-columns: 1fr;
+    }
+
+    .search-container {
+        flex-direction: column;
+    }
+
+    .form-actions {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+}
