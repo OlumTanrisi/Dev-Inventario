@@ -60,7 +60,7 @@ A ferramenta visa:
 ├── main.py # Back-end Flask (API e lógica principal) 
 
 
-##Atulizações Futuras
+**Atulizações Futuras**
 - Login com autenticação de usuários.
 - Controle por departamentos.
 - tórios mensais automáticos.
