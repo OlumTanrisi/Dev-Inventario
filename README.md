@@ -1,4 +1,4 @@
-![image](https://github.com/user-attachments/assets/c8976d16-2f21-47ec-a762-d397ee759d28)# 📦 Inventário Relacional - Santamérica
+# 📦 Inventário Relacional - Santamérica
 
 Sistema web desenvolvido para **gestão de inventário**, com foco em controle de entradas, saídas, atualizações e monitoramento de itens essenciais utilizados internamente.
 
