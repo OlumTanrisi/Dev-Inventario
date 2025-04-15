@@ -49,16 +49,16 @@ A ferramenta visa:
 
 ## 📂 Estrutura de Pastas
 <body>
-<div>📂Inv</div>
-<div>├── app/ </div>
-<div>│      └── static/ </div>
-<div>│         └── style.css # Estilo visual da aplicação </div>
-<div>│         └── script.js # Lógica de interação front-end</div>
-<div>├── templates/ </div>
-<div>│         └── index.html # Interface principal </div>
-<div>├── style.css # Estilo visual da aplicação </div>
-<div>│         └── script.js # Lógica de interação front-end</div>
-<div>├── main.py # Back-end Flask (API e lógica principal) </div>
+<div> 📂Inv</div>
+<div> ├── app/ </div>
+<div> │      └── static/ </div>
+<div> │         └── style.css # Estilo visual da aplicação </div>
+<div> │         └── script.js # Lógica de interação front-end</div>
+<div> ├── templates/ </div>
+<div> │         └── index.html # Interface principal </div>
+<div> ├── style.css # Estilo visual da aplicação </div>
+<div> │         └── script.js # Lógica de interação front-end</div>
+<div> ├── main.py # Back-end Flask (API e lógica principal) </div>
 </body>
 
 **Atulizações Futuras**
