@@ -1,4 +1,4 @@
-# 📦 Inventário Relacional - Santamérica
+# 📦 Inventário Produtos de Escritorio
 
 Sistema web desenvolvido para **gestão de inventário**, com foco em controle de entradas, saídas, atualizações e monitoramento de itens essenciais utilizados internamente.
 
