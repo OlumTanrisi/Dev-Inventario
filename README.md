@@ -48,18 +48,18 @@ A ferramenta visa:
 ---
 
 ## 📂 Estrutura de Pastas
-
-📂Inv
-├── app/ 
-│      └── static/ 
-│         └── style.css # Estilo visual da aplicação 
-│         └── script.js # Lógica de interação front-end
-├── templates/ 
-│         └── index.html # Interface principal 
-├── style.css # Estilo visual da aplicação 
-│         └── script.js # Lógica de interação front-end
-├── main.py # Back-end Flask (API e lógica principal) 
-
+<body>
+<div>📂Inv</div>
+<div>├── app/ </div>
+<div>│      └── static/ </div>
+<div>│         └── style.css # Estilo visual da aplicação </div>
+<div>│         └── script.js # Lógica de interação front-end</div>
+<div>├── templates/ </div>
+<div>│         └── index.html # Interface principal </div>
+<div>├── style.css # Estilo visual da aplicação </div>
+<div>│         └── script.js # Lógica de interação front-end</div>
+<div>├── main.py # Back-end Flask (API e lógica principal) </div>
+</body>
 
 **Atulizações Futuras**
 - Login com autenticação de usuários.
