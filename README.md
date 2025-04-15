@@ -49,22 +49,22 @@ A ferramenta visa:
 
 ## 📂 Estrutura de Pastas
 
-<div>📂Inv</div>
-<div>├── app/ </div>
-<div>│      └── static/ </div>
-<div>│         └── style.css # Estilo visual da aplicação </div>
-<div>│         └── script.js # Lógica de interação front-end</div>
-<div>├── templates/ </div>
-<div>│         └── index.html # Interface principal </div>
-<div>├── style.css # Estilo visual da aplicação </div>
-<div>│         └── script.js # Lógica de interação front-end</div>
-<div>├── main.py # Back-end Flask (API e lógica principal) </div>
+<div> 📂Inv </div>
+<div> ├── app/ </div>
+<div> │      └── static/ </div>
+<div> │         └── style.css # Estilo visual da aplicação </div>
+<div> │         └── script.js # Lógica de interação front-end </div>
+<div> ├── templates/ </div>
+<div> │         └── index.html # Interface principal </div>
+<div> ├── style.css # Estilo visual da aplicação </div>
+<div> │         └── script.js # Lógica de interação front-end </div>
+<div> ├── main.py # Back-end Flask (API e lógica principal) </div>
 
 ---
 
-**Atulizações Futuras**
+**Proximas Atulizações**
 - Login com autenticação de usuários.
-- Controle por departamentos.
-- tórios mensais automáticos.
-- Integração com sistemas de compras.
+- Relatórios semanais automáticos.
+- Integração com sistema de controle de aplicativos.
+- Implementação de segurança do codigo.
 
