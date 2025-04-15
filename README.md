@@ -60,6 +60,7 @@ A ferramenta visa:
 <div>│         └── script.js # Lógica de interação front-end</div>
 <div>├── main.py # Back-end Flask (API e lógica principal) </div>
 
+---
 
 **Atulizações Futuras**
 - Login com autenticação de usuários.
@@ -67,5 +68,3 @@ A ferramenta visa:
 - tórios mensais automáticos.
 - Integração com sistemas de compras.
 
-## 👨‍💼 Desenvolvido por
-Equipe de desenvolvimento interno da Imobiliária Santamérica
