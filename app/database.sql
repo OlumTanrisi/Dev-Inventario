@@ -69,7 +69,7 @@ DELIMITER ;
 -- Insert initial data from the Excel file
 INSERT INTO items (name, measurement_unit, current_quantity, status) VALUES
 ('Apontadores', 'Unidade', 2, 'SUFFICIENT'),
-('Bandeja Simples', 'Unidade', 10, 'SUFFICIENT'),
+('Bateria 9v', 'Unidade', 10, 'SUFFICIENT'),
 ('Borracha branca', 'Unidade', 2, 'SUFFICIENT'),
 ('Caderno 96 folhas Espiral (pequeno)', 'Unidade', 4, 'SUFFICIENT'),
 ('Caderno Protocolo 100fls', 'Unidade', 5, 'SUFFICIENT'),
@@ -85,6 +85,10 @@ INSERT INTO items (name, measurement_unit, current_quantity, status) VALUES
 ('Clips 6/0 (caixa de 220 unidades)', 'Unidade', 2, 'SUFFICIENT'),
 ('Cola Branca Bastão 10g', 'Unidade', -1, 'COMPRAS'),
 ('Cola Branca Líq.(110g)', 'Unidade', 4, 'SUFFICIENT'),
+('Cheirinho', 'Unidade', 60, 'SUFFICIENT'),
+('Copos', 'Unidade', 38, 'SUFFICIENT'),
+('Calculadora', 'Unidade', 4, 'SUFFICIENT'),
+('Corretivo em fita', 'Unidade', 6, 'SUFFICIENT'),
 ('Envelope Plástico (ofício c/ furos) Caixa com 400', 'Unidade', 1, 'SUFFICIENT'),
 ('Extrator de Grampo', 'Unidade', 3, 'SUFFICIENT'),
 ('Fita Adesiva Dupla Face (18mm)', 'Unidade', 3, 'SUFFICIENT'),
@@ -99,6 +103,4 @@ INSERT INTO items (name, measurement_unit, current_quantity, status) VALUES
 ('Tesoura', 'Unidade', 3, 'COMPRAS'),
 ('Tinta para Carimbo Vermelha (40ml)', 'Unidade', 4, 'SUFFICIENT'),
 ('Tinta para Carimbo Preta (40ml)', 'Unidade', 5, 'SUFFICIENT'),
-('Chachimbo', 'Unidade', 60, 'SUFFICIENT'),
-('Lantejoula', 'Unidade', 38, 'SUFFICIENT'),
 ('Pasta Transparente L', 'Unidade', 12, 'SUFFICIENT');
