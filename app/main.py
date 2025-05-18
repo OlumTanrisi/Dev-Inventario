@@ -14,6 +14,8 @@ import os
 
 # ================== CONFIGURAÇÃO DO APP ==================
 
+#====== APENAS PARA TESTE ======
+
 # Instancia o app Flask, especificando os diretórios estáticos e de templates
 app = Flask(__name__, static_folder='static', template_folder='templates')
 
