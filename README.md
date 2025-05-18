@@ -1,4 +1,4 @@
-# 📦 Inventário Produtos de Escritorio
+## 📦 Inventário Produtos de Escritorio
 
 Sistema web desenvolvido para **gestão de inventário**, com foco em controle de entradas, saídas, atualizações e monitoramento de itens essenciais utilizados internamente.
 
@@ -65,6 +65,5 @@ A ferramenta visa:
 **Proximas Atulizações**
 - Login com autenticação de usuários.
 - Relatórios semanais automáticos.
-- Integração com sistema de controle de aplicativos.
 - Implementação de segurança do codigo.
 
